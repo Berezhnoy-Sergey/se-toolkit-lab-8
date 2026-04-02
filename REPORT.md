@@ -41,23 +41,7 @@ Agent loop started
 
 ## Task 2B — Web client
 
-**Flutter client verification:**
-1. Opened `http://10.93.25.240:42002/flutter`
-2. Entered access key: `my-secret-nanobot-key`
-3. Asked: `What labs are available?`
-4. Agent responded with list of 8 labs:
-   - Lab 01 – Products, Architecture & Roles
-   - Lab 02 — Run, Fix, and Deploy a Backend Service
-   - Lab 03 — Backend API: Explore, Debug, Implement, Deploy
-   - Lab 04 — Testing, Front-end, and AI Agents
-   - Lab 05 — Data Pipeline and Analytics Dashboard
-   - Lab 06 — Build Your Own Agent
-   - Lab 07 — Build a Client with an AI Coding Agent
-   - Lab 08 — lab-08
-
-**WebSocket test output:**
-```json
-{"type":"text","content":"Here are the available labs:\n\n1. **Lab 01** – Products, Architecture & Roles\n2. **Lab 02** — Run, Fix, and Deploy a Backend Service\n3. **Lab 03** — Backend API: Explore, Debug, Implement, Deploy\n4. **Lab 04** — Testing, Front-end, and AI Agents\n5. **Lab 05** — Data Pipeline and Analytics Dashboard\n6. **Lab 06** — Build Your Own Agent\n7. **Lab 07** — Build a Client with an AI Coding Agent\n8. **Lab 08** — lab-08\n\nWould you like to see details for any specific lab?","format":"markdown"}
+![Flutter chat response](images/flutter-chat.png)
 
 ## Task 3A — Structured logging
 
