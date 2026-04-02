@@ -33,13 +33,15 @@ Agent: Here are the available labs: [list of labs]. Which lab would you like to 
 
 ## Task 2A — Deployed agent
 
-nanobot-1  | 2026-04-02 16:48:11.005 | INFO     | nanobot.agent.tools.mcp:connect_mcp_servers:246 - MCP server 'lms': connected, 9 tools registered
-nanobot-1  | 2026-04-02 16:48:11.005 | INFO     | nanobot.agent.tools.mcp:connect_mcp_servers:246 - MCP server 'lms': connected, 9 tools registered
-nanobot-1  | 2026-04-02 16:48:11.005 | INFO     | nanobot.agent.loop:run:280 - Agent loop started
+Startup log excerpt:
+🐈 Starting nanobot gateway version 0.1.4.post5 on port 18790...
+✓ Channels enabled: webchat
+MCP server 'lms': connected, 9 tools registered
+Agent loop started
 
 ## Task 2B — Web client
 
-Flutter client at `http://10.93.25.240:42002/flutter` works. After entering access key, agent responds to questions.
+![Flutter chat response](images/flutter-chat.png)
 
 ## Task 3A — Structured logging
 
