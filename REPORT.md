@@ -33,19 +33,13 @@ Agent: Here are the available labs: [list of labs]. Which lab would you like to 
 
 ## Task 2A — Deployed agent
 
-Startup log excerpt:
-🐈 Starting nanobot gateway version 0.1.4.post5 on port 18790...
-✓ Channels enabled: webchat
-MCP server 'lms': connected, 9 tools registered
-Agent loop started
+nanobot-1  | 2026-04-02 16:48:11.005 | INFO     | nanobot.agent.tools.mcp:connect_mcp_servers:246 - MCP server 'lms': connected, 9 tools registered
+nanobot-1  | 2026-04-02 16:48:11.005 | INFO     | nanobot.agent.tools.mcp:connect_mcp_servers:246 - MCP server 'lms': connected, 9 tools registered
+nanobot-1  | 2026-04-02 16:48:11.005 | INFO     | nanobot.agent.loop:run:280 - Agent loop started
 
 ## Task 2B — Web client
 
-**WebSocket test output:**
-```json
-{"type":"text","content":"Here are the available labs:\n\n1. **Lab 01** – Products, Architecture & Roles\n2. **Lab 02** — Run, Fix, and Deploy a Backend Service\n3. **Lab 03** — Backend API: Explore, Debug, Implement, Deploy\n4. **Lab 04** — Testing, Front-end, and AI Agents\n5. **Lab 05** — Data Pipeline and Analytics Dashboard\n6. **Lab 06** — Build Your Own Agent\n7. **Lab 07** — Build a Client with an AI Coding Agent\n8. **Lab 08** — lab-08\n\nWould you like to see details for any specific lab?","format":"markdown"}
-React dashboard:
-Opened http://10.93.25.240:42002/ with LMS_API_KEY=my-secret-api-key. Dashboard loads and shows analytics data.
+Flutter client at `http://10.93.25.240:42002/flutter` works. After entering access key, agent responds to questions.
 
 ## Task 3A — Structured logging
 
