@@ -1,3 +1,4 @@
+
 # Lab 8 — Report
 
 Paste your checkpoint evidence below. Add screenshots as image files in the repo and reference them with `![description](path)`.
@@ -41,7 +42,14 @@ Agent loop started
 
 ## Task 2B — Web client
 
-![Flutter chat response](images/flutter_chat.jpg)
+**WebSocket test output (real agent response):**
+{"type":"text","content":"Here are the available labs:\n\n1. **Lab 01** – Products, Architecture & Roles\n2. **Lab 02** — Run, Fix, and Deploy a Backend Service\n3. **Lab 03** — Backend API: Explore, Debug, Implement, Deploy\n4. **Lab 04** — Testing, Front-end, and AI Agents\n5. **Lab 05** — Data Pipeline and Analytics Dashboard\n6. **Lab 06** — Build Your Own Agent\n7. **Lab 07** — Build a Client with an AI Coding Agent\n8. **Lab 08** — lab-08","format":"markdown"}
+
+Flutter client: The agent responds with the same list of labs when asked "What labs are available?
+
+https://images/flutter_chat.jpg
+
+PASS
 
 ## Task 3A — Structured logging
 
