@@ -53,11 +53,209 @@ PASS
 
 ## Task 3A — Structured logging
 
-<!-- Paste happy-path and error-path log excerpts, VictoriaLogs query screenshot -->
+**Happy-path log excerpt:**
+backend-1 | 2026-04-03 17:13:03,161 INFO - request_started
+backend-1 | 2026-04-03 17:13:03,219 INFO - request_completed
+backend-1 | INFO: GET /items/ HTTP/1.1 200 OK
+
+**Error-path log excerpt:**
+backend-1 | 2026-04-03 17:24:41,285 INFO - db_query
+backend-1 | 2026-04-03 17:24:41,287 ERROR - db_query
+
+(PostgreSQL stopped → items not found)
+
+**VictoriaLogs query screenshot:**
+![VictoriaLogs query](images/victorialogs-query.png)
 
 ## Task 3B — Traces
 
-<!-- Screenshots: healthy trace span hierarchy, error trace -->
+Example trace from VictoriaTraces API:
+
+
+{
+    "data": [
+        {
+            "processes": {
+                "p1": {
+                    "serviceName": "Learning Management Service",
+                    "tags": [
+                        {
+                            "key": "telemetry.auto.version",
+                            "type": "string",
+                            "value": "0.61b0"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "python"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.40.0"
+                        }
+                    ]
+                }
+            },
+            "spans": [
+                {
+                    "duration": 1260,
+                    "logs": [],
+                    "operationName": "SELECT db-lab-8",
+                    "processID": "p1",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "8fa5cd880d52eda8",
+                            "traceID": "d475ad062c8b1aea2d941a8b2f72ddb5"
+                        }
+                    ],
+                    "spanID": "864e4d01eb46e5a0",
+                    "startTime": 1775238029924993,
+                    "tags": [
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "opentelemetry.instrumentation.sqlalchemy"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "0.61b0"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "db-lab-8"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "net.peer.name",
+                            "type": "string",
+                            "value": "postgres"
+**Error trace (PostgreSQL stopped, items not found):**
+
+{
+    "data": [
+        {
+            "processes": {
+                "p1": {
+                    "serviceName": "Learning Management Service",
+                    "tags": [
+                        {
+                            "key": "telemetry.auto.version",
+                            "type": "string",
+                            "value": "0.61b0"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "python"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.40.0"
+                        }
+                    ]
+                }
+            },
+            "spans": [
+                {
+                    "duration": 41,
+                    "logs": [],
+                    "operationName": "GET /items/ http send",
+                    "processID": "p1",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "998da9142e170fff",
+                            "traceID": "3b42e7e1fc85b054011c8e3f7623c8f4"
+                        }
+                    ],
+                    "spanID": "2980294f1c359ed2",
+                    "startTime": 1775238797919388,
+                    "tags": [
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "opentelemetry.instrumentation.fastapi"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "0.61b0"
+                        },
+                        {
+                            "key": "asgi.event.type",
+                            "type": "string",
+                            "value": "http.response.start"
+                        },
+                        {
+                            "key": "http.status_code",
+                            "type": "string",
+                            "value": "404"
+                        }
+                    ],
+                    "traceID": "3b42e7e1fc85b054011c8e3f7623c8f4",
+                    "warnings": null
+                },
+                {
+                    "duration": 20,
+                    "logs": [],
+                    "operationName": "GET /items/ http send",
+                    "processID": "p1",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "spanID": "998da9142e170fff",
+                            "traceID": "3b42e7e1fc85b054011c8e3f7623c8f4"
+                        }
+                    ],
+                    "spanID": "aebab2b265954266",
+                    "startTime": 1775238797919884,
+                    "tags": [
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "opentelemetry.instrumentation.fastapi"
+                        },
+
+
 
 ## Task 3C — Observability MCP tools
 
