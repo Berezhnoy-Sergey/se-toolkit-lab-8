@@ -41,7 +41,7 @@ Agent loop started
 
 ## Task 2B — Web client
 
-![Flutter chat response](images/flutter-chat.png)
+![Flutter chat response](images/flutter-chat.jpg)
 
 ## Task 3A — Structured logging
 
